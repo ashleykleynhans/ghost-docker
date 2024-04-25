@@ -12,9 +12,7 @@ RUN apt update && \
     apt install -y --no-install-recommends \
         software-properties-common \
         build-essential \
-        python3-venv \
         python3-pip \
-        python3-tk \
         python3-dev \
         nginx \
         bash \
@@ -41,8 +39,6 @@ RUN apt update && \
         tmux \
         pkg-config \
         libcairo2-dev \
-        libgoogle-perftools4 \
-        libtcmalloc-minimal4 \
         apt-transport-https \
         ca-certificates && \
     update-ca-certificates && \
@@ -51,7 +47,7 @@ RUN apt update && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 
 # Set Python
-RUN ln -s /usr/bin/python3.10 /usr/bin/python
+RUN ln -s /usr/bin/python3.6 /usr/bin/python
 
 # Stage 2: Install Ghost and python modules
 FROM base as setup
@@ -64,11 +60,8 @@ RUN git clone https://github.com/ai-forever/ghost.git && \
 # Install Ghost
 WORKDIR /ghost
 COPY ghost/requirements* ./
-RUN python3 -m venv --system-site-packages venv && \
-    source venv/bin/activate && \
-    pip3 install --no-cache-dir torch==1.7.1+cu110 torchvision --index-url https://download.pytorch.org/whl/cu101 && \
-    pip3 install -r requirements.txt && \
-    deactivate
+RUN pip3 install --no-cache-dir torch==1.7.0+cu110 torchvision --index-url https://download.pytorch.org/whl/cu101 && \
+    pip3 install -r requirements.txt
 
 # Download the models
 RUN sh download_models.sh
