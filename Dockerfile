@@ -9,7 +9,6 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 # Install Ubuntu packages
 RUN apt update && \
-    apt -y upgrade && \
     apt install -y --no-install-recommends \
         software-properties-common \
         build-essential \
