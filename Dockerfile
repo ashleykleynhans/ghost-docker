@@ -60,7 +60,7 @@ RUN git clone https://github.com/ai-forever/ghost.git && \
 # Install Ghost
 WORKDIR /ghost
 COPY ghost/requirements* ./
-RUN pip3 install --no-cache-dir torch==1.7.0+cu110 torchvision --index-url https://download.pytorch.org/whl/cu101 && \
+RUN pip3 install --no-cache-dir torch==1.7.1+cu101 torchvision --index-url https://download.pytorch.org/whl/cu101 && \
     pip3 install -r requirements.txt
 
 # Download the models
