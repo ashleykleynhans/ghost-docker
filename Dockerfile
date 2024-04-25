@@ -66,7 +66,7 @@ WORKDIR /ghost
 COPY ghost/requirements* ./
 RUN python3 -m venv --system-site-packages venv && \
     source venv/bin/activate && \
-    pip3 install --no-cache-dir torch==1.6.0+cu101 torchvision==0.7.0+cu101 --index-url https://download.pytorch.org/whl/cu101 && \
+    pip3 install --no-cache-dir torch==1.7.1+cu110 torchvision --index-url https://download.pytorch.org/whl/cu101 && \
     pip3 install -r requirements.txt && \
     deactivate
 
