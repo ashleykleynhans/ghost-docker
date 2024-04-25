@@ -1,5 +1,5 @@
 # Stage 1: Base
-FROM pytorch/pytorch:1.6.0-cuda10.1-cudnn7-runtime as base
+FROM pytorch/pytorch:1.7.1-cuda11.0-cudnn8-runtime as base
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -66,6 +66,7 @@ WORKDIR /ghost
 COPY ghost/requirements* ./
 RUN python3 -m venv --system-site-packages venv && \
     source venv/bin/activate && \
+    pip3 install --no-cache-dir torch==1.6.0+cu101 torchvision==0.7.0+cu101 --index-url https://download.pytorch.org/whl/torch_stable.html && \
     pip3 install -r requirements.txt && \
     deactivate
 
