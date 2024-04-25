@@ -9,9 +9,9 @@
 
 ## Installs
 
-* Ubuntu 22.04 LTS
-* CUDA 11.8
-* Python 3.10.12
+* Ubuntu 18.04 LTS
+* CUDA 11.0
+* Python 3.6
 * [Ghost](
   https://github.com/ai-forever/ghost)
 * Torch 1.7.1
