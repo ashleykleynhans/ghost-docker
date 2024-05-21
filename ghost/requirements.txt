@@ -2,7 +2,7 @@ numpy
 torch
 torchvision
 opencv-python
-onnx==1.9.0
+onnx==1.16.0
 onnxruntime-gpu==1.4.0
 mxnet-cu101mkl
 scikit-image
